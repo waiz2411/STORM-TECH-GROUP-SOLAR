@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@500;600;700;800&family=Cinzel:wght@500;600;700&display=swap');
+
+:root {
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-heading: 'Syne', var(--font-sans);
+  --font-serif: 'Cinzel', serif;
+
+  /* Executive Classic Luxury Color Palette */
+  --color-bg-base: #080b11;
+  --color-bg-surface: #0e131f;
+  --color-bg-elevated: #141b2a;
+  
+  --color-gold: #c5a880;
+  --color-gold-light: #dfc9a8;
+  --color-gold-dark: #9a7b53;
+
+  --color-navy: #1a2744;
+  --color-navy-accent: #2563eb;
+  
+  --color-border-subtle: rgba(255, 255, 255, 0.08);
+  --color-border-hover: rgba(197, 168, 128, 0.35);
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-bg-base);
+  color: #e2e8f0;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, .font-heading {
+  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
+}
+
+/* Luxury Matte Glass Panels */
+.luxury-card {
+  background: linear-gradient(180deg, rgba(20, 27, 42, 0.75) 0%, rgba(12, 17, 27, 0.85) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 1.25rem;
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.luxury-card:hover {
+  border-color: rgba(197, 168, 128, 0.3);
+  transform: translateY(-3px);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7), 0 0 25px rgba(197, 168, 128, 0.05);
+}
+
+.luxury-card-gold {
+  background: linear-gradient(135deg, rgba(197, 168, 128, 0.06) 0%, rgba(20, 27, 42, 0.8) 100%);
+  border: 1px solid rgba(197, 168, 128, 0.25);
+}
+
+/* Subtle Metallic Gold Gradients */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #ffffff 0%, #dfc9a8 50%, #c5a880 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-silver-gradient {
+  background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 50%, #94a3b8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* 3D Canvas Viewport */
+.canvas-3d-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 480px;
+}
+
+.canvas-3d-wrapper canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+  outline: none;
+}
+
+/* Refined Subtle Architectural Grid */
+.bg-architectural-grid {
+  background-size: 60px 60px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+}
+
+/* Executive Buttons */
+.btn-gold {
+  background: linear-gradient(135deg, #dfc9a8 0%, #c5a880 100%);
+  color: #080b11;
+  font-weight: 700;
+  transition: all 0.3s ease;
+}
+
+.btn-gold:hover {
+  background: linear-gradient(135deg, #ecdcc4 0%, #d4b890 100%);
+  box-shadow: 0 10px 25px -5px rgba(197, 168, 128, 0.3);
+  transform: translateY(-1px);
+}
+
+.btn-outline-gold {
+  background: transparent;
+  border: 1px solid rgba(197, 168, 128, 0.35);
+  color: #dfc9a8;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-gold:hover {
+  background: rgba(197, 168, 128, 0.08);
+  border-color: rgba(197, 168, 128, 0.7);
+  color: #ffffff;
+}
+
+/* Sleek Minimalist Slider */
+input[type="range"] {
+  -webkit-appearance: none;
+  background: #1e293b;
+  border-radius: 9999px;
+  height: 6px;
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #c5a880;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  border: 2px solid #ffffff;
+  transition: all 0.2s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  background: #dfc9a8;
+}
+
+/* Clean Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #080b11;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}

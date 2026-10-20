@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Engineering Services & Systems | Storm Tech Group.® | Mahikeng</title>
+  <meta name="description" content="Professional solar power systems, electrical installations, borehole connections, and construction services in Mahikeng, North West. 10517 Signal Hill. Call +27 63 727 7824.">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            executive: {
+              gold: '#c5a880',
+              goldLight: '#dfc9a8',
+              goldDark: '#9a7b53',
+              dark: '#080b11',
+              surface: '#0e131f',
+              elevated: '#141b2a'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Three.js (r128), OrbitControls & GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="css/custom.css">
+</head>
+<body class="bg-[#080b11] text-slate-100 antialiased selection:bg-[#c5a880] selection:text-slate-950">
+
+  <!-- Navigation Mount Point -->
+  <div id="navbar-mount"></div>
+
+  <!-- Page Header -->
+  <section class="relative pt-16 pb-12 overflow-hidden bg-[#06080d] border-b border-white/[0.06]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/[0.04] border border-white/[0.08] text-xs font-medium text-[#dfc9a8] mb-4">
+        <i data-lucide="shield-check" class="w-4 h-4 text-[#c5a880]"></i>
+        Certified Engineering & Contracting Services
+      </div>
+      <h1 class="text-4xl sm:text-5xl font-bold font-heading tracking-tight text-white">
+        Precision <span class="text-gold-gradient">Solar, Electrical</span> & Borehole Systems
+      </h1>
+      <p class="mt-4 text-slate-400 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
+        From residential micro-grids and power backup to borehole connections, construction contracting, and legal SANS 10142-1 Certificate of Compliance auditing in Mahikeng.
+      </p>
+    </div>
+  </section>
+
+  <!-- 3D Interactive Hardware Explorer -->
+  <section class="py-14 px-4 bg-[#0a0e17] border-b border-white/[0.06]">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center max-w-2xl mx-auto mb-8">
+        <h2 class="text-2xl font-bold font-heading text-white">Interactive 3D Hardware System Explorer</h2>
+        <p class="text-xs text-slate-400 mt-1">
+          Inspect the architecture of our Tier-1 Photovoltaic Modules, Sunsynk Inverter, and LiFePO4 Battery Wall.
+        </p>
+      </div>
+
+      <div class="luxury-card p-4 sm:p-6 border border-white/[0.1] relative">
+        
+        <!-- 3D Canvas -->
+        <div id="configurator-3d-canvas" class="canvas-3d-wrapper h-[380px] sm:h-[460px] rounded-2xl overflow-hidden cursor-grab active:cursor-grabbing"></div>
+
+        <!-- 3D Navigation Controls -->
+        <div class="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex flex-wrap items-center justify-center gap-2 sm:gap-3 pointer-events-auto bg-[#080b11]/95 backdrop-blur-md p-2 rounded-2xl border border-white/[0.1] shadow-2xl">
+          <button onclick="window.focusConfigComponent('solar')" class="px-3.5 py-1.5 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] text-slate-200 border border-white/[0.08] text-xs font-semibold flex items-center gap-1.5 transition-all">
+            <i data-lucide="sun" class="w-3.5 h-3.5 text-[#c5a880]"></i>
+            <span>PV Modules</span>
+          </button>
+
+          <button onclick="window.focusConfigComponent('inverter')" class="px-3.5 py-1.5 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] text-slate-200 border border-white/[0.08] text-xs font-semibold flex items-center gap-1.5 transition-all">
+            <i data-lucide="cpu" class="w-3.5 h-3.5 text-[#c5a880]"></i>
+            <span>Hybrid Inverter</span>
+          </button>
+
+          <button onclick="window.focusConfigComponent('battery')" class="px-3.5 py-1.5 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] text-slate-200 border border-white/[0.08] text-xs font-semibold flex items-center gap-1.5 transition-all">
+            <i data-lucide="battery" class="w-3.5 h-3.5 text-[#c5a880]"></i>
+            <span>LiFePO4 Storage</span>
+          </button>
+
+          <button onclick="window.focusConfigComponent('all')" class="px-3 py-1.5 rounded-xl bg-white/[0.02] hover:bg-white/[0.06] text-slate-400 text-xs font-medium transition-all">
+            Reset View
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Detailed Services Breakdown -->
+  <section class="py-20 px-4">
+    <div class="max-w-7xl mx-auto space-y-16">
+      
+      <!-- Service 1: Residential Solar Power Systems -->
+      <div id="residential" class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center scroll-mt-28">
+        <div class="lg:col-span-6 space-y-4">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/[0.04] text-[#dfc9a8] border border-white/[0.08] text-xs font-medium uppercase tracking-wider">
+            Residential Power Backup
+          </div>
+          <h2 class="text-3xl font-bold font-heading text-white">Solar Power Systems (Power Backup)</h2>
+          <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+            Custom-sized 5kW, 8kW, and 12kW hybrid solar systems engineered to power your home seamlessly through all Eskom load-shedding stages while reducing your monthly municipal spend by up to 90%.
+          </p>
+          <div class="grid grid-cols-2 gap-3 text-xs text-slate-300 pt-2">
+            <div class="p-3 rounded-xl bg-[#0a0e17] border border-white/[0.08] flex items-center gap-2">
+              <i data-lucide="check" class="w-4 h-4 text-[#c5a880] shrink-0"></i>
+              <span>550W+ Tier-1 Monocrystalline</span>
+            </div>
+            <div class="p-3 rounded-xl bg-[#0a0e17] border border-white/[0.08] flex items-center gap-2">
+              <i data-lucide="check" class="w-4 h-4 text-[#c5a880] shrink-0"></i>
+              <span>Sunsynk & Deye Inverters</span>
+            </div>
+            <div class="p-3 rounded-xl bg-[#0a0e17] border border-white/[0.08] flex items-center gap-2">
+              <i data-lucide="check" class="w-4 h-4 text-[#c5a880] shrink-0"></i>
+              <span>10-Year Battery Warranty</span>
+            </div>
+            <div class="p-3 rounded-xl bg-[#0a0e17] border border-white/[0.08] flex items-center gap-2">
+              <i data-lucide="check" class="w-4 h-4 text-[#c5a880] shrink-0"></i>
+              <span>SANS COC Included</span>
+            </div>
+          </div>
+          <div class="pt-2">
+            <a href="contact.html?service=Residential+Solar" class="btn-gold px-5 py-2.5 rounded-xl text-xs font-bold inline-flex items-center gap-2 shadow-lg">
+              <span>Request Solar Consultation</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="lg:col-span-6">
+          <div class="luxury-card p-8 rounded-3xl border border-white/[0.1] relative overflow-hidden">
+            <div class="flex items-center justify-between border-b border-white/[0.08] pb-4 mb-6">
+              <h3 class="font-bold text-white text-sm font-heading">Benchmark Residential Package Specification</h3>
+              <span class="text-[11px] font-mono text-[#dfc9a8] bg-white/[0.04] px-2.5 py-1 rounded-full border border-white/[0.08]">Popular Choice</span>
+            </div>
+            <div class="space-y-3.5 text-xs">
+              <div class="flex justify-between py-1.5 border-b border-white/[0.06]">
+                <span class="text-slate-400">Inverter Architecture:</span>
+                <span class="font-medium text-white">8kW Sunsynk Pure Sine Wave</span>
+              </div>
+              <div class="flex justify-between py-1.5 border-b border-white/[0.06]">
+                <span class="text-slate-400">Battery Storage:</span>
+                <span class="font-medium text-white">10.24 kWh LiFePO4 (6,000 Cycles)</span>
+              </div>
+              <div class="flex justify-between py-1.5 border-b border-white/[0.06]">
+                <span class="text-slate-400">PV Solar Modules:</span>
+                <span class="font-medium text-white">10 x 550W Tier-1 Mono PERC</span>
+              </div>
+              <div class="flex justify-between py-1.5 border-b border-white/[0.06]">
+                <span class="text-slate-400">Estimated Monthly Savings:</span>
+                <span class="font-bold text-[#dfc9a8]">R 2,800 – R 3,600 / month</span>
+              </div>
+              <div class="flex justify-between py-1.5">
+                <span class="text-slate-400">Turnaround Time:</span>
+                <span class="font-medium text-slate-200">1 to 2 Working Days</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Service 2: Borehole Connections & Solar Pumping -->
+      <div id="borehole" class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center pt-8 border-t border-white/[0.06] scroll-mt-28">
+        <div class="lg:col-span-6 lg:order-2 space-y-4">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/[0.04] text-[#dfc9a8] border border-white/[0.08] text-xs font-medium uppercase tracking-wider">
+            Water Security & Agriculture
+          </div>
+          <h2 class="text-3xl font-bold font-heading text-white">Borehole Connections & Solar Pumping</h2>
+          <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+            Protect your property from municipal water interruptions and high pumping costs. Storm Tech Group specializes in complete electrical borehole connections, high-yield solar PV pump inverters, and automatic tank level controls.
+          </p>
+          <div class="grid grid-cols-2 gap-3 text-xs text-slate-300 pt-2">
+            <div class="p-3 rounded-xl bg-[#0a0e17] border border-white/[0.08] flex items-center gap-2">
+              <i data-lucide="check" class="w-4 h-4 text-[#c5a880] shrink-0"></i>
+              <span>Solar VFD Pump Controllers</span>
+            </div>
+            <div class="p-3 rounded-xl bg-[#0a0e17] border border-white/[0.08] flex items-center gap-2">
+              <i data-lucide="check" class="w-4 h-4 text-[#c5a880] shrink-0"></i>
+              <span>Direct Submersible Wiring</span>
+            </div>
+            <div class="p-3 rounded-xl bg-[#0a0e17] border border-white/[0.08] flex items-center gap-2">
+              <i data-lucide="check" class="w-4 h-4 text-[#c5a880] shrink-0"></i>
+              <span>Dual Grid/Solar AC-DC Inverters</span>
+            </div>
+            <div class="p-3 rounded-xl bg-[#0a0e17] border border-white/[0.08] flex items-center gap-2">
+              <i data-lucide="check" class="w-4 h-4 text-[#c5a880] shrink-0"></i>
+              <span>Pressure Tank Integration</span>
+            </div>
+          </div>
+          <div class="pt-2">
+            <a href="contact.html?service=Borehole+Connections" class="btn-gold px-5 py-2.5 rounded-xl text-xs font-bold inline-flex items-center gap-2 shadow-lg">
+              <span>Book Borehole Connection Assessment</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="lg:col-span-6 lg:order-1">
+          <div class="luxury-card p-8 rounded-3xl border border-white/[0.1] space-y-4">
+            <div class="flex items-center gap-3 border-b border-white/[0.08] pb-4">
+              <div class="w-10 h-10 rounded-xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-[#dfc9a8]">
+                <i data-lucide="droplets" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-white text-sm font-heading">Solar Borehole Technical Setup</h3>
+                <p class="text-[11px] text-slate-400">Zero-Eskom Water Pumping</p>
+              </div>
+            </div>
+            <div class="p-4 rounded-xl bg-[#0a0e17] border border-white/[0.08]">
+              <div class="text-xs text-[#dfc9a8] font-mono">Solar Submersible Drive (0.75kW – 15kW)</div>
+              <p class="text-xs text-slate-400 mt-1">Direct DC-to-AC variable frequency drive runs pumps at optimal speeds directly from solar panels from sunrise to sunset.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-[#0a0e17] border border-white/[0.08]">
+              <div class="text-xs text-[#dfc9a8] font-mono">Automated Storage & Float Management</div>
+              <p class="text-xs text-slate-400 mt-1">Automatic shut-off when reservoir/JoJo tanks are full, preventing dry-run pump burnouts and saving water.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Service 3: Electrical Installations & Construction -->
+      <div id="electrical" class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center pt-8 border-t border-white/[0.06] scroll-mt-28">
+        <div class="lg:col-span-6 space-y-4">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/[0.04] text-[#dfc9a8] border border-white/[0.08] text-xs font-medium uppercase tracking-wider">
+            Electrical & Construction
+          </div>
+          <h2 class="text-3xl font-bold font-heading text-white">Electrical Installations & Construction Works</h2>
+          <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+            Professional electrical contracting for residential builds, commercial developments, and industrial sites. We handle complete electrical wiring, switchgear, DB board upgrades, surge arrestors, and site construction electrification.
+          </p>
+          <div class="grid grid-cols-2 gap-3 text-xs text-slate-300 pt-2">
+            <div class="p-3 rounded-xl bg-[#0a0e17] border border-white/[0.08] flex items-center gap-2">
+              <i data-lucide="check" class="w-4 h-4 text-[#c5a880] shrink-0"></i>
+              <span>Domestic & Industrial Wiring</span>
+            </div>
+            <div class="p-3 rounded-xl bg-[#0a0e17] border border-white/[0.08] flex items-center gap-2">
+              <i data-lucide="check" class="w-4 h-4 text-[#c5a880] shrink-0"></i>
+              <span>DB Board Modular Rebuilds</span>
+            </div>
+            <div class="p-3 rounded-xl bg-[#0a0e17] border border-white/[0.08] flex items-center gap-2">
+              <i data-lucide="check" class="w-4 h-4 text-[#c5a880] shrink-0"></i>
+              <span>Construction Site Electrification</span>
+            </div>
+            <div class="p-3 rounded-xl bg-[#0a0e17] border border-white/[0.08] flex items-center gap-2">
+              <i data-lucide="check" class="w-4 h-4 text-[#c5a880] shrink-0"></i>
+              <span>Lightning & Surge Arrestors</span>
+            </div>
+          </div>
+          <div class="pt-2">
+            <a href="contact.html?service=Electrical+Installations" class="btn-gold px-5 py-2.5 rounded-xl text-xs font-bold inline-flex items-center gap-2 shadow-lg">
+              <span>Book Electrical Installation</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="lg:col-span-6">
+          <div class="luxury-card p-8 rounded-3xl border border-white/[0.1] space-y-4">
+            <h3 class="font-bold text-white text-sm font-heading border-b border-white/[0.08] pb-4 mb-4">Construction & Electrical Standards</h3>
+            <div class="p-4 rounded-xl bg-[#0a0e17] border border-white/[0.08]">
+              <div class="text-xs text-[#dfc9a8] font-mono">Commercial Three-Phase Power (30kW – 150kW+)</div>
+              <p class="text-xs text-slate-400 mt-1">Industrial distribution boards, motor control centers (MCC), generator automatic transfer switches (ATS), and power factor correction.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-[#0a0e17] border border-white/[0.08]">
+              <div class="text-xs text-[#dfc9a8] font-mono">Structural Mounting & Civil Infrastructure</div>
+              <p class="text-xs text-slate-400 mt-1">Ground mounts, carport solar structures, cable trenching, and certified structural anchoring tailored to North West soil and wind loads.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Service 4: Electrical COC Certificates -->
+      <div id="coc" class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center pt-8 border-t border-white/[0.06] scroll-mt-28">
+        <div class="lg:col-span-6 space-y-4">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/[0.04] text-[#dfc9a8] border border-white/[0.08] text-xs font-medium uppercase tracking-wider">
+            Legal Compliance
+          </div>
+          <h2 class="text-3xl font-bold font-heading text-white">Electrical Certificate of Compliance (COC)</h2>
+          <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+            By South African law (Occupational Health & Safety Act), every electrical installation must possess a valid COC. Whether selling property, modernizing your DB board, or commissioning a solar installation, our registered Master Electricians execute meticulous inspections in Mahikeng.
+          </p>
+          <ul class="space-y-2 text-xs text-slate-300">
+            <li class="flex items-center gap-2"><i data-lucide="shield-check" class="w-4 h-4 text-[#c5a880]"></i> Property Transfer COC Inspections in Mahikeng & North West</li>
+            <li class="flex items-center gap-2"><i data-lucide="shield-check" class="w-4 h-4 text-[#c5a880]"></i> Post-Solar Supplementary Certificate Endorsement</li>
+            <li class="flex items-center gap-2"><i data-lucide="shield-check" class="w-4 h-4 text-[#c5a880]"></i> Department of Labour accredited wireman's stamp</li>
+          </ul>
+          <div class="pt-2">
+            <a href="contact.html?service=COC+Inspection" class="btn-gold px-5 py-2.5 rounded-xl text-xs font-bold inline-flex items-center gap-2 shadow-lg">
+              <span>Book a COC Inspection</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="lg:col-span-6">
+          <div class="luxury-card p-8 rounded-3xl border border-white/[0.1] space-y-4">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-[#dfc9a8]">
+                <i data-lucide="file-check-2" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-white text-sm font-heading">SANS 10142-1 Safety Protocol</h3>
+                <p class="text-[11px] text-slate-400">Mandatory Verification Checklist</p>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-slate-300 pt-2">
+              <div class="p-3 rounded-lg bg-[#0a0e17] border border-white/[0.08]">
+                <div class="font-bold text-white">Insulation Resistance</div>
+                <div class="text-[11px] text-slate-400 mt-0.5">500V DC test > 1.0 MΩ</div>
+              </div>
+              <div class="p-3 rounded-lg bg-[#0a0e17] border border-white/[0.08]">
+                <div class="font-bold text-white">Earth Loop Impedance</div>
+                <div class="text-[11px] text-slate-400 mt-0.5">Fault clearing verification</div>
+              </div>
+              <div class="p-3 rounded-lg bg-[#0a0e17] border border-white/[0.08]">
+                <div class="font-bold text-white">Earth Leakage (RCD)</div>
+                <div class="text-[11px] text-slate-400 mt-0.5">30mA trip within 300ms</div>
+              </div>
+              <div class="p-3 rounded-lg bg-[#0a0e17] border border-white/[0.08]">
+                <div class="font-bold text-white">Conduit & Polarity</div>
+                <div class="text-[11px] text-slate-400 mt-0.5">Phase-neutral bonding</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Technical Comparison Table -->
+  <section class="py-20 px-4 bg-[#06080d] border-t border-white/[0.06]">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <h2 class="text-2xl sm:text-3xl font-bold font-heading text-white">Engineering Comparison Matrix</h2>
+        <p class="text-xs text-slate-400 mt-2">Compare our Tier-1 LiFePO4 standards against outdated gel/lead-acid setups.</p>
+      </div>
+
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-xs text-slate-300 luxury-card rounded-2xl overflow-hidden border border-white/[0.1]">
+          <thead class="bg-[#0a0e17] uppercase tracking-wider text-slate-400 border-b border-white/[0.08]">
+            <tr>
+              <th class="p-4">Specification</th>
+              <th class="p-4 text-[#dfc9a8] font-bold bg-white/[0.02]">Our LiFePO4 Lithium Bank</th>
+              <th class="p-4 text-slate-400">Legacy Lead-Acid / Gel Battery</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-white/[0.06]">
+            <tr>
+              <td class="p-4 font-semibold text-white">Operational Lifespan</td>
+              <td class="p-4 font-bold text-[#dfc9a8] bg-white/[0.02]">6,000+ Cycles (10 to 15 Years)</td>
+              <td class="p-4 text-slate-400">500 to 800 Cycles (1 to 2 Years)</td>
+            </tr>
+            <tr>
+              <td class="p-4 font-semibold text-white">Usable Capacity (DoD)</td>
+              <td class="p-4 font-bold text-[#dfc9a8] bg-white/[0.02]">90% to 95% Depth of Discharge</td>
+              <td class="p-4 text-slate-400">Only 50% Depth of Discharge</td>
+            </tr>
+            <tr>
+              <td class="p-4 font-semibold text-white">Charge Speed</td>
+              <td class="p-4 font-bold text-[#dfc9a8] bg-white/[0.02]">1.5 - 2 Hours Full Charge</td>
+              <td class="p-4 text-slate-400">8 - 10 Hours (Misses back-to-back load shedding)</td>
+            </tr>
+            <tr>
+              <td class="p-4 font-semibold text-white">Manufacturer Warranty</td>
+              <td class="p-4 font-bold text-[#dfc9a8] bg-white/[0.02]">10-Year Replacement Guarantee</td>
+              <td class="p-4 text-slate-400">6 Months - 1 Year Limited</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Mount Point -->
+  <div id="footer-mount"></div>
+
+  <!-- Shared Scripts -->
+  <script src="js/navbar.js"></script>
+  <script src="js/footer.js"></script>
+  <script src="js/three-configurator.js"></script>
+  <script src="js/main.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.initConfigurator3D) {
+        window.initConfigurator3D('configurator-3d-canvas');
+      }
+    });
+  </script>
+</body>
+</html>

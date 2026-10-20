@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Storm Tech Group.® | Solar Power Systems, Electrical & Borehole Services | Mahikeng</title>
+  <meta name="description" content="Storm Tech Group.® - Premier solar energy system services, electrical installations, borehole connections, and construction company in Mahikeng, North West. 10517 Signal Hill. Call +27 63 727 7824.">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            executive: {
+              gold: '#c5a880',
+              goldLight: '#dfc9a8',
+              goldDark: '#9a7b53',
+              dark: '#080b11',
+              surface: '#0e131f',
+              elevated: '#141b2a'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Three.js (r128), OrbitControls & GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="css/custom.css">
+</head>
+<body class="bg-[#080b11] text-slate-100 antialiased selection:bg-[#c5a880] selection:text-slate-950">
+
+  <!-- Navigation Mount Point -->
+  <div id="navbar-mount"></div>
+
+  <!-- Hero Section with Architectural 3D Villa Canvas -->
+  <section class="relative min-h-[90vh] flex items-center overflow-hidden pt-8 pb-16 bg-architectural-grid">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left Hero Content (6 cols) -->
+        <div class="lg:col-span-6 space-y-6 text-center lg:text-left">
+          
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.08] text-xs font-medium text-[#dfc9a8]">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#c5a880]"></span>
+            <span>10517 Signal Hill, Mahikeng</span>
+            <span class="text-slate-600">•</span>
+            <span class="text-slate-300">Solar & Electrical Specialists</span>
+          </div>
+
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold font-heading tracking-tight text-white leading-[1.15]">
+            Engineered <span class="text-gold-gradient">Solar, Electrical</span> & Borehole Systems.
+          </h1>
+
+          <p class="text-slate-300 text-base sm:text-lg leading-relaxed max-w-xl mx-auto lg:mx-0 font-normal">
+            Eliminate load shedding permanently and secure continuous power & water with custom-engineered Photovoltaic systems, lithium power backup, borehole connections, and certified SANS 10142-1 electrical installations across Mahikeng and the North West.
+          </p>
+
+          <!-- Action Buttons -->
+          <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
+            <a href="calculator.html" class="btn-gold px-7 py-4 rounded-xl text-sm font-bold flex items-center gap-2 group shadow-xl">
+              <i data-lucide="calculator" class="w-4 h-4"></i>
+              <span>3D Solar Sizing Tool</span>
+              <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+            </a>
+
+            <a href="tel:+27637277824" class="btn-outline-gold px-6 py-4 rounded-xl text-sm font-semibold flex items-center gap-2">
+              <i data-lucide="phone" class="w-4 h-4 text-[#c5a880]"></i>
+              <span>+27 63 727 7824</span>
+            </a>
+          </div>
+
+          <!-- Trust Credentials Under Buttons -->
+          <div class="pt-8 border-t border-white/[0.08] grid grid-cols-3 gap-6 text-center lg:text-left">
+            <div>
+              <div class="text-2xl font-bold font-heading text-white">500+</div>
+              <p class="text-xs text-slate-400 mt-0.5">North West Installs</p>
+            </div>
+            <div>
+              <div class="text-2xl font-bold font-heading text-[#dfc9a8]">100%</div>
+              <p class="text-xs text-slate-400 mt-0.5">COC Certified</p>
+            </div>
+            <div>
+              <div class="text-2xl font-bold font-heading text-white">25 Yr</div>
+              <p class="text-xs text-slate-400 mt-0.5">Panel Guarantee</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right 3D Architectural Villa (6 cols) -->
+        <div class="lg:col-span-6 relative">
+          <div class="relative w-full aspect-[4/3] sm:aspect-square max-h-[560px] rounded-3xl overflow-hidden luxury-card border border-white/[0.12] p-2 shadow-2xl">
+            
+            <!-- 3D Canvas Mount -->
+            <div id="hero-3d-canvas" class="canvas-3d-wrapper rounded-2xl overflow-hidden cursor-grab active:cursor-grabbing"></div>
+
+            <!-- 3D HUD Badge -->
+            <div class="absolute top-4 left-4 z-20 pointer-events-auto">
+              <div class="bg-[#0e131f]/90 backdrop-blur-md px-3.5 py-1.5 rounded-xl border border-white/[0.08] flex items-center gap-2 text-xs text-slate-300">
+                <i data-lucide="rotate-3d" class="w-4 h-4 text-[#c5a880]"></i>
+                <span>Architectural 3D Model • Drag to Orbit</span>
+              </div>
+            </div>
+
+            <!-- Lighting Mode Switcher -->
+            <div class="absolute bottom-4 left-4 right-4 z-20 flex items-center justify-between pointer-events-auto">
+              <div class="bg-[#0e131f]/90 backdrop-blur-md px-3.5 py-1.5 rounded-xl border border-white/[0.08] flex items-center gap-2 text-xs text-slate-300">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#c5a880]"></span>
+                <span>Photovoltaic Yield: <strong>8.8 kW</strong></span>
+              </div>
+
+              <div class="flex items-center gap-1.5 bg-[#0e131f]/90 backdrop-blur-md p-1 rounded-xl border border-white/[0.08]">
+                <button onclick="window.setDayNightMode(true)" class="p-1.5 rounded-lg bg-white/[0.06] text-[#dfc9a8] hover:bg-white/[0.1] transition-colors" title="Simulate Sunlight">
+                  <i data-lucide="sun" class="w-4 h-4"></i>
+                </button>
+                <button onclick="window.setDayNightMode(false)" class="p-1.5 rounded-lg bg-white/[0.06] text-slate-400 hover:text-white transition-colors" title="Simulate Evening">
+                  <i data-lucide="moon" class="w-4 h-4"></i>
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Executive Engineering Metrics Bar -->
+  <section class="border-y border-white/[0.06] bg-[#06080d] py-6 px-4">
+    <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+      <div>
+        <span class="text-xs text-slate-400 flex items-center justify-center gap-1.5">
+          <i data-lucide="sun" class="w-3.5 h-3.5 text-[#c5a880]"></i>
+          Mahikeng Solar Irradiance
+        </span>
+        <span class="text-lg font-bold font-heading text-white mt-1 block">5.8 Peak Sun Hours</span>
+      </div>
+
+      <div>
+        <span class="text-xs text-slate-400 flex items-center justify-center gap-1.5">
+          <i data-lucide="battery" class="w-3.5 h-3.5 text-[#c5a880]"></i>
+          Grid Independence
+        </span>
+        <span class="text-lg font-bold font-heading text-[#dfc9a8] mt-1 block">Up to 95% Autonomy</span>
+      </div>
+
+      <div>
+        <span class="text-xs text-slate-400 flex items-center justify-center gap-1.5">
+          <i data-lucide="shield-check" class="w-3.5 h-3.5 text-[#c5a880]"></i>
+          Compliance
+        </span>
+        <span class="text-lg font-bold font-heading text-white mt-1 block">SANS 10142-1 COC</span>
+      </div>
+
+      <div>
+        <span class="text-xs text-slate-400 flex items-center justify-center gap-1.5">
+          <i data-lucide="map-pin" class="w-3.5 h-3.5 text-[#c5a880]"></i>
+          Engineering Base
+        </span>
+        <span class="text-lg font-bold font-heading text-white mt-1 block">10517 Signal Hill</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Solar Sizing Tool Preview on Home -->
+  <section class="py-20 px-4 relative">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/[0.04] text-[#dfc9a8] border border-white/[0.08] text-xs font-semibold uppercase tracking-wider mb-3">
+          Instant Financial & Sizing Assessment
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-bold font-heading text-white">
+          Simulate Your System Sizing & Rand Savings
+        </h2>
+        <p class="mt-3 text-slate-400 text-sm sm:text-base">
+          Adjust your monthly electricity spend to see your required PV array, inverter capacity, and payback time in South African Rand.
+        </p>
+      </div>
+
+      <div class="luxury-card p-6 sm:p-10 max-w-5xl mx-auto border border-white/[0.1]">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          
+          <!-- Slider inputs (7 cols) -->
+          <div class="lg:col-span-7 space-y-6">
+            <div>
+              <div class="flex justify-between items-center mb-3">
+                <label for="monthly-bill-slider" class="text-xs font-semibold uppercase tracking-wider text-slate-300">Monthly Electricity Spend (ZAR)</label>
+                <span id="bill-value-display" class="text-2xl font-bold font-heading text-[#dfc9a8]">R 3,500</span>
+              </div>
+              <input type="range" id="monthly-bill-slider" min="1000" max="15000" step="250" value="3500" class="w-full">
+              <div class="flex justify-between text-[11px] text-slate-500 mt-2 font-mono">
+                <span>R 1,000 / mo</span>
+                <span>R 7,500 / mo</span>
+                <span>R 15,000+ / mo</span>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="load-shedding-stage" class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Load-Shedding Stage</label>
+                <select id="load-shedding-stage" class="w-full bg-[#0a0e17] border border-white/[0.1] rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-[#c5a880]">
+                  <option value="2">Stage 2 (4 hrs/day protection)</option>
+                  <option value="4" selected>Stage 4 (7.5 hrs/day protection)</option>
+                  <option value="6">Stage 6 (11 hrs/day protection)</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="electrical-phase" class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Electrical Connection</label>
+                <select id="electrical-phase" class="w-full bg-[#0a0e17] border border-white/[0.1] rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-[#c5a880]">
+                  <option value="single-phase" selected>Single Phase (230V Home)</option>
+                  <option value="three-phase">Three Phase (400V Commercial/Large Estate)</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Visual Roof Preview Grid -->
+            <div>
+              <div class="flex justify-between items-center mb-2">
+                <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Simulated Roof Module Array</span>
+                <span id="calc-panels" class="text-xs font-mono text-[#dfc9a8]">8 Modules (550W Tier-1)</span>
+              </div>
+              <div id="calc-roof-visualizer"></div>
+            </div>
+          </div>
+
+          <!-- Calculated Results Card (5 cols) -->
+          <div class="lg:col-span-5 bg-[#0a0e17] rounded-2xl p-6 border border-white/[0.1] space-y-4 shadow-xl">
+            <h3 class="text-xs font-bold uppercase tracking-wider text-[#dfc9a8] border-b border-white/[0.08] pb-2">Engineered Specification</h3>
+            
+            <div class="space-y-3 text-xs">
+              <div class="flex justify-between items-center">
+                <span class="text-slate-400">PV Solar Array:</span>
+                <span id="calc-kwp" class="font-bold text-white font-heading">4.4 kWp</span>
+              </div>
+
+              <div class="flex justify-between items-center">
+                <span class="text-slate-400">Hybrid Inverter:</span>
+                <span id="calc-inverter" class="font-bold text-white font-heading">6.0 kW</span>
+              </div>
+
+              <div class="flex justify-between items-center">
+                <span class="text-slate-400">LiFePO4 Storage:</span>
+                <span id="calc-battery" class="font-bold text-white font-heading">10.24 kWh</span>
+              </div>
+
+              <div class="flex justify-between items-center">
+                <span class="text-slate-400">Load Shedding Protection:</span>
+                <span id="calc-backup-time" class="font-semibold text-slate-200">7.5 hrs backup</span>
+              </div>
+
+              <div class="pt-3 border-t border-white/[0.08] flex justify-between items-baseline">
+                <span class="text-xs text-slate-400">Est. Monthly Savings:</span>
+                <span id="calc-monthly-savings" class="text-xl font-bold font-heading text-[#dfc9a8]">R 2,870 / mo</span>
+              </div>
+
+              <div class="flex justify-between items-center text-xs">
+                <span class="text-slate-400">Estimated Payback:</span>
+                <span id="calc-payback" class="font-bold text-slate-200">3.8 Years</span>
+              </div>
+            </div>
+
+            <div class="pt-2">
+              <a id="calc-wa-quote-btn" href="#" target="_blank" class="w-full py-3 rounded-xl btn-gold text-xs font-bold transition-all flex items-center justify-center gap-2 shadow-lg">
+                <i data-lucide="message-circle" class="w-4 h-4"></i>
+                <span>Inquire on This System</span>
+              </a>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Competencies Grid -->
+  <section class="py-20 px-4 bg-[#06080d] border-t border-white/[0.06]">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/[0.04] text-[#dfc9a8] border border-white/[0.08] text-xs font-semibold uppercase tracking-wider mb-3">
+            Core Specializations
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-bold font-heading text-white">
+            Solar Power Systems, Electrical & Borehole Services
+          </h2>
+        </div>
+        <a href="services.html" class="inline-flex items-center gap-2 text-[#dfc9a8] hover:text-white font-semibold text-xs transition-colors">
+          <span>View All Services</span>
+          <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <!-- Service Card 1: Solar Power Systems (Power Backup) -->
+        <div class="luxury-card p-6 rounded-2xl group">
+          <div class="w-11 h-11 rounded-xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-[#dfc9a8] mb-5">
+            <i data-lucide="sun" class="w-5 h-5"></i>
+          </div>
+          <h3 class="text-lg font-bold font-heading text-white mb-2">Solar Power Systems (Power Backup)</h3>
+          <p class="text-xs text-slate-400 leading-relaxed mb-4">
+            Custom-engineered rooftop PV arrays with tier-1 monocrystalline panels and silent lithium storage for continuous household and commercial load-shedding immunity.
+          </p>
+          <ul class="text-xs text-slate-300 space-y-2 border-t border-white/[0.06] pt-4">
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#c5a880]"></i> Seamless 10ms power switchover</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#c5a880]"></i> Sunsynk & Deye hybrid inverters</li>
+          </ul>
+        </div>
+
+        <!-- Service Card 2: Electrical Installations -->
+        <div class="luxury-card p-6 rounded-2xl group">
+          <div class="w-11 h-11 rounded-xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-[#dfc9a8] mb-5">
+            <i data-lucide="zap" class="w-5 h-5"></i>
+          </div>
+          <h3 class="text-lg font-bold font-heading text-white mb-2">Electrical Installations</h3>
+          <p class="text-xs text-slate-400 leading-relaxed mb-4">
+            Full-spectrum electrical installation services for domestic homes, estates, retail premises, and commercial plants adhering strictly to SANS 10142-1 wiring standards.
+          </p>
+          <ul class="text-xs text-slate-300 space-y-2 border-t border-white/[0.06] pt-4">
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#c5a880]"></i> Single & 3-phase power distribution</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#c5a880]"></i> Complete rewiring & circuit protection</li>
+          </ul>
+        </div>
+
+        <!-- Service Card 3: Borehole Connections -->
+        <div class="luxury-card p-6 rounded-2xl group">
+          <div class="w-11 h-11 rounded-xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-[#dfc9a8] mb-5">
+            <i data-lucide="droplets" class="w-5 h-5"></i>
+          </div>
+          <h3 class="text-lg font-bold font-heading text-white mb-2">Borehole Connections & Solar Pumping</h3>
+          <p class="text-xs text-slate-400 leading-relaxed mb-4">
+            Complete electrical borehole connections, solar-powered submersible pumps, automated pressure tanks, and uninterrupted agricultural water security across Mahikeng.
+          </p>
+          <ul class="text-xs text-slate-300 space-y-2 border-t border-white/[0.06] pt-4">
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#c5a880]"></i> Direct solar PV pump controllers</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#c5a880]"></i> Automatic water tank float switches</li>
+          </ul>
+        </div>
+
+        <!-- Service Card 4: Construction Company Services -->
+        <div class="luxury-card p-6 rounded-2xl group">
+          <div class="w-11 h-11 rounded-xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-[#dfc9a8] mb-5">
+            <i data-lucide="hard-hat" class="w-5 h-5"></i>
+          </div>
+          <h3 class="text-lg font-bold font-heading text-white mb-2">Construction Contracting Services</h3>
+          <p class="text-xs text-slate-400 leading-relaxed mb-4">
+            Commercial and residential construction support, structural mounting engineering, conduit trenching, site electrification, and specialized building infrastructure.
+          </p>
+          <ul class="text-xs text-slate-300 space-y-2 border-t border-white/[0.06] pt-4">
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#c5a880]"></i> Site infrastructure electrification</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#c5a880]"></i> Ground-mount solar structural builds</li>
+          </ul>
+        </div>
+
+        <!-- Service Card 5: Electrical COC Certificates -->
+        <div class="luxury-card p-6 rounded-2xl group">
+          <div class="w-11 h-11 rounded-xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-[#dfc9a8] mb-5">
+            <i data-lucide="file-check-2" class="w-5 h-5"></i>
+          </div>
+          <h3 class="text-lg font-bold font-heading text-white mb-2">Electrical COC Certificates</h3>
+          <p class="text-xs text-slate-400 leading-relaxed mb-4">
+            Official Certificates of Compliance issued by registered Master Electricians for property transfers, solar commissioning, and building insurance validation.
+          </p>
+          <ul class="text-xs text-slate-300 space-y-2 border-t border-white/[0.06] pt-4">
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#c5a880]"></i> SANS 10142-1 legal adherence</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#c5a880]"></i> Fast turnaround inspections in Mahikeng</li>
+          </ul>
+        </div>
+
+        <!-- Service Card 6: 24/7 Emergency Diagnostics -->
+        <div class="luxury-card p-6 rounded-2xl group">
+          <div class="w-11 h-11 rounded-xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-[#dfc9a8] mb-5">
+            <i data-lucide="alert-triangle" class="w-5 h-5"></i>
+          </div>
+          <h3 class="text-lg font-bold font-heading text-white mb-2">24/7 Emergency Diagnostics</h3>
+          <p class="text-xs text-slate-400 leading-relaxed mb-4">
+            Open 24 hours. Rapid response electrical fault finding, earth leakage tripping, blown mains fuses, surge damage repair, and prompt power restoration.
+          </p>
+          <ul class="text-xs text-slate-300 space-y-2 border-t border-white/[0.06] pt-4">
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#c5a880]"></i> Direct hotline: +27 63 727 7824</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#c5a880]"></i> 24/7 standby emergency vans</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Mahikeng Physical Location Highlight -->
+  <section class="py-20 px-4 relative">
+    <div class="max-w-7xl mx-auto">
+      <div class="luxury-card p-8 sm:p-12 border border-white/[0.1]">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          
+          <div class="lg:col-span-7 space-y-5">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/[0.04] text-[#dfc9a8] border border-white/[0.08] text-xs font-semibold">
+              <i data-lucide="map-pin" class="w-3.5 h-3.5 text-[#c5a880]"></i>
+              Local Engineering Facility
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-bold font-heading text-white">
+              Based at 10517 Signal Hill, Mahikeng
+            </h2>
+            <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+              Our registered engineering workshop and standby technicians are based at 10517 Signal Hill in Mafikeng Town, ensuring direct accountability, rapid on-site maintenance, borehole support, and reliable after-sales service throughout Mahikeng, Mmabatho, and the North West Province.
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+              <div class="p-4 rounded-xl bg-[#0a0e17] border border-white/[0.08]">
+                <div class="text-[11px] text-slate-400 mb-1">Direct Address</div>
+                <div class="font-bold text-white text-xs">10517 Signal Hill, Mafikeng Town, 2745</div>
+                <div class="text-[11px] text-[#dfc9a8] font-mono mt-1">Mahikeng, North West, South Africa</div>
+              </div>
+
+              <div class="p-4 rounded-xl bg-[#0a0e17] border border-white/[0.08]">
+                <div class="text-[11px] text-slate-400 mb-1">Operating Hours</div>
+                <div class="font-bold text-emerald-400 text-xs flex items-center gap-1.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                  Open 24 Hours / 7 Days
+                </div>
+                <div class="text-[11px] text-slate-400 mt-1">24/7 Standby Emergency Service Active</div>
+              </div>
+            </div>
+
+            <div class="flex flex-wrap gap-4 pt-4">
+              <a href="https://www.google.com/maps/search/?api=1&query=Storm%20Tech%20Group.%C2%AE&query_place_id=ChIJTy3q-cDLoh4Rcm2Nt30JZjU" target="_blank" rel="noopener noreferrer" class="btn-gold px-6 py-3 rounded-xl text-xs font-bold flex items-center gap-2 shadow-lg">
+                <i data-lucide="navigation" class="w-4 h-4"></i>
+                Get Driving Directions (Google Maps)
+              </a>
+              <a href="tel:+27637277824" class="btn-outline-gold px-6 py-3 rounded-xl text-xs font-semibold flex items-center gap-2">
+                <i data-lucide="phone" class="w-4 h-4"></i>
+                Call +27 63 727 7824
+              </a>
+            </div>
+          </div>
+
+          <div class="lg:col-span-5">
+            <div class="rounded-2xl overflow-hidden border border-white/[0.1] shadow-2xl h-80 relative">
+              <iframe 
+                src="https://maps.google.com/maps?q=10517+Signal+Hill,+Mafikeng,+Mahikeng,+South+Africa&t=&z=14&ie=UTF8&iwloc=&output=embed" 
+                width="100%" 
+                height="100%" 
+                style="border:0; filter: grayscale(100%) invert(90%) contrast(110%);" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+              <div class="absolute bottom-3 left-3 bg-[#080b11]/90 border border-white/[0.1] px-3 py-1.5 rounded-lg text-xs font-medium text-[#dfc9a8]">
+                📍 10517 Signal Hill, Mahikeng
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Mount Point -->
+  <div id="footer-mount"></div>
+
+  <!-- Shared Scripts -->
+  <script src="js/navbar.js"></script>
+  <script src="js/footer.js"></script>
+  <script src="js/three-hero.js"></script>
+  <script src="js/calculator.js"></script>
+  <script src="js/main.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.initHero3D) {
+        window.initHero3D('hero-3d-canvas');
+      }
+      if (window.initSolarCalculator) {
+        window.initSolarCalculator();
+      }
+    });
+  </script>
+</body>
+</html>

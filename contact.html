@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact & 24/7 Standby Dispatch | Storm Tech Group.® | Mahikeng</title>
+  <meta name="description" content="Contact Storm Tech Group.® at 10517 Signal Hill, Mafikeng Town, Mahikeng. Call +27 63 727 7824. Open 24 Hours. Solar power systems, electrical installations, borehole connections & construction.">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            executive: {
+              gold: '#c5a880',
+              goldLight: '#dfc9a8',
+              goldDark: '#9a7b53',
+              dark: '#080b11',
+              surface: '#0e131f',
+              elevated: '#141b2a'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Three.js (r128), OrbitControls & GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="css/custom.css">
+</head>
+<body class="bg-[#080b11] text-slate-100 antialiased selection:bg-[#c5a880] selection:text-slate-950">
+
+  <!-- Navigation Mount Point -->
+  <div id="navbar-mount"></div>
+
+  <!-- Hero Header -->
+  <section class="relative pt-16 pb-12 overflow-hidden bg-[#06080d] border-b border-white/[0.06]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+      <div id="contact-status-pill" class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-950/40 border border-emerald-500/30 text-xs font-medium text-emerald-300 mb-4">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span>Open 24 Hours · 24/7 Emergency Dispatch Available</span>
+      </div>
+      <h1 class="text-4xl sm:text-5xl font-bold font-heading tracking-tight text-white">
+        Contact & <span class="text-gold-gradient">System Consultation</span>
+      </h1>
+      <p class="mt-4 text-slate-400 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
+        Visit our facility at 10517 Signal Hill, Mahikeng, or get in touch for rapid on-site electrical service, borehole connections, and solar feasibility audits.
+      </p>
+    </div>
+  </section>
+
+  <!-- Main Contact Section -->
+  <section class="py-16 px-4">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+        
+        <!-- Left: Contact Info (5 cols) -->
+        <div class="lg:col-span-5 space-y-6">
+          
+          <div class="luxury-card p-6 sm:p-8 border border-white/[0.1] space-y-6">
+            <div class="flex items-center gap-3 border-b border-white/[0.08] pb-4">
+              <div class="w-11 h-11 rounded-xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-[#dfc9a8]">
+                <i data-lucide="map-pin" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-white text-base font-heading flex items-center gap-1.5">
+                  <span>Storm Tech Group</span>
+                  <span class="text-xs text-[#c5a880] font-bold">®</span>
+                </h3>
+                <p class="text-xs text-slate-400">Solar · Electrical · Boreholes · Construction</p>
+              </div>
+            </div>
+
+            <div class="space-y-4 text-xs">
+              <div class="flex items-start gap-3">
+                <i data-lucide="map-pin" class="w-4 h-4 text-[#c5a880] shrink-0 mt-0.5"></i>
+                <div>
+                  <div class="text-slate-400">Physical Address:</div>
+                  <div class="font-semibold text-white mt-0.5">10517 Signal Hill, 2745, Mafikeng Town, South Africa</div>
+                  <div class="text-xs text-[#dfc9a8] mt-0.5">Mahikeng, North West Province</div>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3">
+                <i data-lucide="phone" class="w-4 h-4 text-[#c5a880] shrink-0 mt-0.5"></i>
+                <div>
+                  <div class="text-slate-400">Direct Telephone & WhatsApp:</div>
+                  <a href="tel:+27637277824" class="font-bold text-white hover:text-[#dfc9a8] transition-colors text-sm mt-0.5 block">+27 63 727 7824</a>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3">
+                <i data-lucide="clock" class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5"></i>
+                <div>
+                  <div class="text-slate-400">Operating Hours:</div>
+                  <div class="font-semibold text-emerald-400 mt-0.5 flex items-center gap-1.5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                    Open 24 Hours / 7 Days
+                  </div>
+                  <div class="text-slate-400 mt-0.5">24/7 Standby for Urgent Power Outages & Electrical Faults</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-4 flex flex-col gap-3">
+              <a href="https://wa.me/27637277824?text=Hi!%20I%20would%20like%20to%20inquire%20about%20your%20solar,%20electrical,%20and%20borehole%20services." target="_blank" class="w-full py-3.5 rounded-xl btn-gold text-xs font-bold transition-all flex items-center justify-center gap-2 shadow-lg">
+                <i data-lucide="message-circle" class="w-4 h-4"></i>
+                <span>Direct WhatsApp Consultation</span>
+              </a>
+
+              <a href="https://www.google.com/maps/search/?api=1&query=Storm%20Tech%20Group.%C2%AE&query_place_id=ChIJTy3q-cDLoh4Rcm2Nt30JZjU" target="_blank" rel="noopener noreferrer" class="w-full py-3 rounded-xl btn-outline-gold text-xs font-semibold transition-colors flex items-center justify-center gap-2">
+                <i data-lucide="navigation" class="w-4 h-4"></i>
+                <span>Open in Google Maps</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Emergency Box -->
+          <div id="emergency" class="luxury-card p-6 border border-white/[0.1] space-y-3">
+            <div class="flex items-center gap-2 text-white font-bold text-xs font-heading">
+              <i data-lucide="alert-triangle" class="w-4 h-4 text-[#c5a880]"></i>
+              <span>Emergency 24/7 Electrical Faults</span>
+            </div>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              Main breaker tripped and won't reset? Burning electrical odor or lightning surge? Call our 24-hour standby line for immediate response.
+            </p>
+            <a href="tel:+27637277824" id="emergency-call-btn" class="inline-flex items-center gap-2 text-xs font-semibold text-[#dfc9a8] hover:text-white transition-colors">
+              <i data-lucide="phone-outgoing" class="w-3.5 h-3.5"></i>
+              <span>Dial 24/7 Hotline: +27 63 727 7824 &rarr;</span>
+            </a>
+          </div>
+
+        </div>
+
+        <!-- Right: Interactive Quote Form (7 cols) -->
+        <div class="lg:col-span-7" id="quote">
+          <div class="luxury-card p-8 sm:p-10 border border-white/[0.1] shadow-2xl space-y-6">
+            
+            <div class="border-b border-white/[0.08] pb-4">
+              <span class="text-xs font-mono uppercase tracking-widest text-[#dfc9a8]">Direct Engineering Inquiry</span>
+              <h2 class="text-2xl sm:text-3xl font-bold font-heading text-white mt-1">Book an Assessment or Quote</h2>
+              <p class="text-xs text-slate-400 mt-1">
+                Submit your details below. Storm Tech Group specialists will evaluate your requirements and reach out promptly.
+              </p>
+            </div>
+
+            <form id="quote-form" class="space-y-4">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="quote-name" class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Full Name *</label>
+                  <input type="text" id="quote-name" required placeholder="e.g. John Smith" class="w-full bg-[#0a0e17] border border-white/[0.1] rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-[#c5a880] transition-colors">
+                </div>
+
+                <div>
+                  <label for="quote-phone" class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Phone / WhatsApp Number *</label>
+                  <input type="tel" id="quote-phone" required placeholder="e.g. 063 727 7824" class="w-full bg-[#0a0e17] border border-white/[0.1] rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-[#c5a880] transition-colors">
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="quote-service" class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Service Required *</label>
+                  <select id="quote-service" class="w-full bg-[#0a0e17] border border-white/[0.1] rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-[#c5a880] transition-colors">
+                    <option value="Solar Power Systems (Power Backup)">Solar Power Systems (Power Backup)</option>
+                    <option value="Electrical Installation Service">Electrical Installation Service</option>
+                    <option value="Borehole Connection & Solar Pumping">Borehole Connection & Solar Pumping</option>
+                    <option value="Construction Electrical Contracting">Construction Electrical Contracting</option>
+                    <option value="Certificate of Compliance (COC)">Electrical COC Inspection</option>
+                    <option value="Lithium Battery Storage Upgrade">Lithium Battery Storage Upgrade</option>
+                    <option value="24/7 Emergency Repair">Emergency Electrical Repair</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label for="quote-address" class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Suburb / Area *</label>
+                  <input type="text" id="quote-address" required placeholder="e.g. Signal Hill / Mmabatho / Mafikeng Town" class="w-full bg-[#0a0e17] border border-white/[0.1] rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-[#c5a880] transition-colors">
+                </div>
+              </div>
+
+              <div>
+                <label for="quote-notes" class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Project Details or Monthly Spend (ZAR)</label>
+                <textarea id="quote-notes" rows="4" placeholder="Tell us about your current power or borehole setup, monthly electricity bill (R), or specific electrical installation required..." class="w-full bg-[#0a0e17] border border-white/[0.1] rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-[#c5a880] transition-colors"></textarea>
+              </div>
+
+              <button type="submit" class="w-full py-4 rounded-xl btn-gold text-xs font-bold transition-all flex items-center justify-center gap-2 shadow-lg group">
+                <span>Submit & Connect on WhatsApp</span>
+                <i data-lucide="send" class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform"></i>
+              </button>
+
+              <p class="text-[11px] text-slate-500 text-center">
+                Strict confidentiality. Fast response from our Mahikeng technical team.
+              </p>
+            </form>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Google Maps Embed -->
+      <div class="mt-16 rounded-3xl overflow-hidden border border-white/[0.1] shadow-2xl relative h-96">
+        <iframe 
+          src="https://maps.google.com/maps?q=10517+Signal+Hill,+Mafikeng,+Mahikeng,+South+Africa&t=&z=14&ie=UTF8&iwloc=&output=embed" 
+          width="100%" 
+          height="100%" 
+          style="border:0; filter: grayscale(100%) invert(90%) contrast(110%);" 
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+        
+        <div class="absolute top-4 right-4 bg-[#080b11]/90 backdrop-blur-md p-3.5 rounded-2xl border border-white/[0.1] text-xs text-white flex items-center gap-2 shadow-2xl">
+          <i data-lucide="map-pin" class="w-4 h-4 text-[#c5a880]"></i>
+          <span><strong>10517 Signal Hill</strong>, Mafikeng Town, 2745</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer Mount Point -->
+  <div id="footer-mount"></div>
+
+  <!-- Shared Scripts -->
+  <script src="js/navbar.js"></script>
+  <script src="js/footer.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

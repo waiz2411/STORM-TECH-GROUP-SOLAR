@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recent Projects & Installations | Storm Tech Group.® | Mahikeng</title>
+  <meta name="description" content="Explore verified solar PV, borehole pumping, and electrical installations in Mahikeng, Mmabatho, and North West. Case studies, before/after DB board overhauls, and client results.">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            executive: {
+              gold: '#c5a880',
+              goldLight: '#dfc9a8',
+              goldDark: '#9a7b53',
+              dark: '#080b11',
+              surface: '#0e131f',
+              elevated: '#141b2a'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Three.js (r128) & GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="css/custom.css">
+</head>
+<body class="bg-[#080b11] text-slate-100 antialiased selection:bg-[#c5a880] selection:text-slate-950">
+
+  <!-- Navigation Mount Point -->
+  <div id="navbar-mount"></div>
+
+  <!-- Hero Header -->
+  <section class="relative pt-16 pb-12 overflow-hidden bg-[#06080d] border-b border-white/[0.06]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/[0.04] border border-white/[0.08] text-xs font-medium text-[#dfc9a8] mb-4">
+        <i data-lucide="layers" class="w-4 h-4 text-[#c5a880]"></i>
+        Verified Installation Portfolio
+      </div>
+      <h1 class="text-4xl sm:text-5xl font-bold font-heading tracking-tight text-white">
+        Engineering Case Studies & <span class="text-gold-gradient">Proven Performance</span>
+      </h1>
+      <p class="mt-4 text-slate-400 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
+        Explore residential luxury properties, commercial facilities, agricultural solar boreholes, and certified electrical overhauls across Mahikeng & North West.
+      </p>
+    </div>
+  </section>
+
+  <!-- Before & After Transformation Section -->
+  <section class="py-16 px-4 bg-[#0a0e17] border-b border-white/[0.06]">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center max-w-2xl mx-auto mb-10">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/[0.04] text-[#dfc9a8] border border-white/[0.08] text-xs font-medium uppercase tracking-wider mb-2">
+          Engineering Transformation
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-bold font-heading text-white">DB Board Rebuild & Solar Integration</h2>
+        <p class="text-xs text-slate-400 mt-1">
+          From non-compliant wiring to a pristine SANS 10142-1 certified installation in Mafikeng Town.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <!-- Before -->
+        <div class="luxury-card p-6 border border-white/[0.08] relative">
+          <div class="absolute top-4 left-4 bg-white/[0.04] text-slate-400 border border-white/[0.08] text-[11px] font-semibold px-3 py-1 rounded-full">
+            BEFORE: Non-Compliant Legacy Setup
+          </div>
+          <div class="mt-8 space-y-4">
+            <div class="h-44 rounded-2xl bg-[#06080d] border border-white/[0.06] flex flex-col justify-center items-center text-center p-6 text-slate-400">
+              <i data-lucide="alert-circle" class="w-10 h-10 text-slate-500 mb-2"></i>
+              <div class="font-bold text-white text-xs">Overloaded Distribution Board</div>
+              <p class="text-[11px] text-slate-400 mt-1">No lightning surge arrestors, frequent earth leakage tripping on geyser/borehole cycles, invalid COC.</p>
+            </div>
+            <ul class="text-xs text-slate-400 space-y-1.5">
+              <li class="flex items-center gap-2"><i data-lucide="x" class="w-3.5 h-3.5 text-slate-500"></i> Vulnerable to high-voltage grid surges</li>
+              <li class="flex items-center gap-2"><i data-lucide="x" class="w-3.5 h-3.5 text-slate-500"></i> Zero load-shedding backup</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- After -->
+        <div class="luxury-card p-6 border border-white/[0.12] relative">
+          <div class="absolute top-4 left-4 bg-white/[0.06] text-[#dfc9a8] border border-white/[0.1] text-[11px] font-semibold px-3 py-1 rounded-full">
+            AFTER: 8kW Hybrid + 10.24kWh LiFePO4 + SANS COC
+          </div>
+          <div class="mt-8 space-y-4">
+            <div class="h-44 rounded-2xl bg-[#06080d] border border-white/[0.08] flex flex-col justify-center items-center text-center p-6 text-slate-200">
+              <i data-lucide="shield-check" class="w-10 h-10 text-[#c5a880] mb-2"></i>
+              <div class="font-bold text-white text-xs">Modular DIN-Rail Architecture</div>
+              <p class="text-[11px] text-slate-400 mt-1">Type 1+2 surge arrestors, dedicated borehole & essential circuit sub-board, 10ms seamless transfer, full Master Electrician COC.</p>
+            </div>
+            <ul class="text-xs text-[#dfc9a8] space-y-1.5">
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#c5a880]"></i> 100% Eskom load-shedding immunity</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-[#c5a880]"></i> R3,200 monthly electricity bill reduction</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Gallery Grid -->
+  <section class="py-20 px-4">
+    <div class="max-w-7xl mx-auto space-y-10">
+      
+      <!-- Filter Bar -->
+      <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-3">
+        <button class="px-4 py-2 rounded-xl btn-gold text-xs font-bold transition-all shadow-md">
+          All Case Studies
+        </button>
+        <button class="px-4 py-2 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] text-slate-300 font-medium text-xs border border-white/[0.08] transition-colors">
+          Residential Hybrid Solar
+        </button>
+        <button class="px-4 py-2 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] text-slate-300 font-medium text-xs border border-white/[0.08] transition-colors">
+          Commercial 3-Phase PV
+        </button>
+        <button class="px-4 py-2 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] text-slate-300 font-medium text-xs border border-white/[0.08] transition-colors">
+          Borehole Solar Pumping
+        </button>
+      </div>
+
+      <!-- Project Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <!-- Project 1 -->
+        <div class="luxury-card rounded-3xl overflow-hidden border border-white/[0.1] group">
+          <div class="h-48 bg-[#0a0e17] relative p-6 flex flex-col justify-between border-b border-white/[0.06]">
+            <div class="flex justify-between items-start">
+              <span class="px-3 py-1 rounded-full bg-white/[0.04] text-[#dfc9a8] border border-white/[0.08] text-[11px] font-semibold">
+                Residential Hybrid
+              </span>
+              <span class="text-xs text-slate-400 font-mono">Signal Hill, Mahikeng</span>
+            </div>
+            <div>
+              <div class="text-xl font-bold font-heading text-white">8kW Sunsynk + 14.3kWh LiFePO4</div>
+              <p class="text-xs text-[#dfc9a8] mt-0.5">14 x 550W Canadian Solar Mono PERC</p>
+            </div>
+          </div>
+          <div class="p-6 space-y-4">
+            <p class="text-xs text-slate-400 leading-relaxed">
+              Complete home power independence powering 2 air conditioners, pressure pump, double refrigeration, and home office workstations through severe outages.
+            </p>
+            <div class="grid grid-cols-2 gap-2 text-xs pt-2 border-t border-white/[0.06]">
+              <div>
+                <span class="text-slate-500 block text-[11px]">Monthly Savings</span>
+                <span class="font-bold text-[#dfc9a8] font-heading">R 3,850 / mo</span>
+              </div>
+              <div>
+                <span class="text-slate-500 block text-[11px]">Grid Autonomy</span>
+                <span class="font-bold text-white font-heading">92% Off-Grid</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="luxury-card rounded-3xl overflow-hidden border border-white/[0.1] group">
+          <div class="h-48 bg-[#0a0e17] relative p-6 flex flex-col justify-between border-b border-white/[0.06]">
+            <div class="flex justify-between items-start">
+              <span class="px-3 py-1 rounded-full bg-white/[0.04] text-[#dfc9a8] border border-white/[0.08] text-[11px] font-semibold">
+                Commercial 3-Phase
+              </span>
+              <span class="text-xs text-slate-400 font-mono">Mmabatho, North West</span>
+            </div>
+            <div>
+              <div class="text-xl font-bold font-heading text-white">50kW Commercial Solar Array</div>
+              <p class="text-xs text-[#dfc9a8] mt-0.5">88 x 550W Tier-1 Panels + HV Storage</p>
+            </div>
+          </div>
+          <div class="p-6 space-y-4">
+            <p class="text-xs text-slate-400 leading-relaxed">
+              Engineered for a private healthcare clinic and office block with zero-second transfer times, keeping critical diagnostic equipment and servers energized.
+            </p>
+            <div class="grid grid-cols-2 gap-2 text-xs pt-2 border-t border-white/[0.06]">
+              <div>
+                <span class="text-slate-500 block text-[11px]">Monthly Savings</span>
+                <span class="font-bold text-[#dfc9a8] font-heading">R 18,400 / mo</span>
+              </div>
+              <div>
+                <span class="text-slate-500 block text-[11px]">Payback Time</span>
+                <span class="font-bold text-white font-heading">2.9 Years</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="luxury-card rounded-3xl overflow-hidden border border-white/[0.1] group">
+          <div class="h-48 bg-[#0a0e17] relative p-6 flex flex-col justify-between border-b border-white/[0.06]">
+            <div class="flex justify-between items-start">
+              <span class="px-3 py-1 rounded-full bg-white/[0.04] text-[#dfc9a8] border border-white/[0.08] text-[11px] font-semibold">
+                Solar Borehole & Agriculture
+              </span>
+              <span class="text-xs text-slate-400 font-mono">Mahikeng District</span>
+            </div>
+            <div>
+              <div class="text-xl font-bold font-heading text-white">16kW Dual Inverter Borehole Setup</div>
+              <p class="text-xs text-[#dfc9a8] mt-0.5">20.48kWh High-Cycle Lithium Bank</p>
+            </div>
+          </div>
+          <div class="p-6 space-y-4">
+            <p class="text-xs text-slate-400 leading-relaxed">
+              Complete water security and agricultural autonomy for livestock watering, electric security fences, and high-volume 3-phase borehole irrigation.
+            </p>
+            <div class="grid grid-cols-2 gap-2 text-xs pt-2 border-t border-white/[0.06]">
+              <div>
+                <span class="text-slate-500 block text-[11px]">Grid Dependence</span>
+                <span class="font-bold text-[#dfc9a8] font-heading">0% (100% Off-Grid)</span>
+              </div>
+              <div>
+                <span class="text-slate-500 block text-[11px]">Diesel Fuel Cut</span>
+                <span class="font-bold text-white font-heading">85% Reduced</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Mount Point -->
+  <div id="footer-mount"></div>
+
+  <!-- Shared Scripts -->
+  <script src="js/navbar.js"></script>
+  <script src="js/footer.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

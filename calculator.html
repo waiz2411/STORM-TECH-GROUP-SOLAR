@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3D Solar Sizing Calculator | Storm Tech Group.® | Mahikeng</title>
+  <meta name="description" content="Calculate your solar panel, borehole pump, and lithium battery requirements for Eskom load shedding in Mahikeng and North West. Free 3D sizing tool and ZAR payback calculation.">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            executive: {
+              gold: '#c5a880',
+              goldLight: '#dfc9a8',
+              goldDark: '#9a7b53',
+              dark: '#080b11',
+              surface: '#0e131f',
+              elevated: '#141b2a'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Three.js (r128), OrbitControls & GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="css/custom.css">
+</head>
+<body class="bg-[#080b11] text-slate-100 antialiased selection:bg-[#c5a880] selection:text-slate-950">
+
+  <!-- Navigation Mount Point -->
+  <div id="navbar-mount"></div>
+
+  <!-- Hero Header -->
+  <section class="relative pt-16 pb-12 overflow-hidden bg-[#06080d] border-b border-white/[0.06]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/[0.04] border border-white/[0.08] text-xs font-medium text-[#dfc9a8] mb-4">
+        <i data-lucide="calculator" class="w-4 h-4 text-[#c5a880]"></i>
+        South African Solar Engineering Engine
+      </div>
+      <h1 class="text-4xl sm:text-5xl font-bold font-heading tracking-tight text-white">
+        Solar PV & Energy Storage <span class="text-gold-gradient">Sizing Assessment</span>
+      </h1>
+      <p class="mt-4 text-slate-400 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
+        Calibrated for Mahikeng & North West solar irradiance (5.8 peak sun hours/day) and Eskom load-shedding stages.
+      </p>
+    </div>
+  </section>
+
+  <!-- Main Calculator Workspace -->
+  <section class="py-16 px-4">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        
+        <!-- Left: Input Controls & Appliance Selection (7 cols) -->
+        <div class="lg:col-span-7 space-y-8">
+          
+          <!-- Step 1: Electricity Usage -->
+          <div class="luxury-card p-6 sm:p-8 border border-white/[0.1] space-y-6">
+            <div class="flex items-center gap-3">
+              <span class="w-7 h-7 rounded-lg bg-[#c5a880] text-slate-950 font-bold flex items-center justify-center font-heading text-xs">1</span>
+              <div>
+                <h3 class="text-base font-bold font-heading text-white">Monthly Electricity Spend</h3>
+                <p class="text-xs text-slate-400">Mahikeng Local Municipality & Eskom residential/commercial tariffs</p>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex justify-between items-center mb-3">
+                <span class="text-xs font-semibold uppercase tracking-wider text-slate-300">Monthly Bill (ZAR):</span>
+                <span id="bill-value-display" class="text-2xl font-bold font-heading text-[#dfc9a8]">R 4,500</span>
+              </div>
+              <input type="range" id="monthly-bill-slider" min="1000" max="25000" step="250" value="4500" class="w-full">
+              <div class="flex justify-between text-[11px] text-slate-500 mt-2 font-mono">
+                <span>R 1,000</span>
+                <span>R 12,500</span>
+                <span>R 25,000+</span>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+              <div>
+                <label for="load-shedding-stage" class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Desired Protection Level</label>
+                <select id="load-shedding-stage" class="w-full bg-[#0a0e17] border border-white/[0.1] rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-[#c5a880]">
+                  <option value="1">Stage 1 (2 hrs/day load shedding)</option>
+                  <option value="2">Stage 2 (4 hrs/day load shedding)</option>
+                  <option value="4" selected>Stage 4 (7.5 hrs/day load shedding)</option>
+                  <option value="6">Stage 6 (11 hrs/day load shedding)</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="electrical-phase" class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Electrical Supply Connection</label>
+                <select id="electrical-phase" class="w-full bg-[#0a0e17] border border-white/[0.1] rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-[#c5a880]">
+                  <option value="single-phase" selected>Single Phase (Standard 230V)</option>
+                  <option value="three-phase">Three Phase (Commercial / 400V)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 2: Essential Appliances Checklist -->
+          <div class="luxury-card p-6 sm:p-8 border border-white/[0.1] space-y-6">
+            <div class="flex items-center gap-3">
+              <span class="w-7 h-7 rounded-lg bg-white/[0.08] text-white font-bold flex items-center justify-center font-heading text-xs">2</span>
+              <div>
+                <h3 class="text-base font-bold font-heading text-white">Select Essential Appliances to Backup</h3>
+                <p class="text-xs text-slate-400">Choose key circuits to be routed to the essential backup sub-distribution board</p>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              
+              <label class="flex items-center gap-3 p-3 rounded-xl bg-[#0a0e17] border border-white/[0.08] hover:border-white/[0.2] cursor-pointer transition-colors">
+                <input type="checkbox" id="app-lights" checked class="w-4 h-4 rounded accent-[#c5a880] bg-slate-800 border-slate-700">
+                <div>
+                  <div class="text-xs font-semibold text-white">LED Lighting & Wi-Fi Router</div>
+                  <div class="text-[11px] text-slate-400">~150W continuous</div>
+                </div>
+              </label>
+
+              <label class="flex items-center gap-3 p-3 rounded-xl bg-[#0a0e17] border border-white/[0.08] hover:border-white/[0.2] cursor-pointer transition-colors">
+                <input type="checkbox" id="app-fridge" checked class="w-4 h-4 rounded accent-[#c5a880] bg-slate-800 border-slate-700">
+                <div>
+                  <div class="text-xs font-semibold text-white">Refrigeration & Freezers</div>
+                  <div class="text-[11px] text-slate-400">~300W compressor cycle</div>
+                </div>
+              </label>
+
+              <label class="flex items-center gap-3 p-3 rounded-xl bg-[#0a0e17] border border-white/[0.08] hover:border-white/[0.2] cursor-pointer transition-colors">
+                <input type="checkbox" id="app-tv" checked class="w-4 h-4 rounded accent-[#c5a880] bg-slate-800 border-slate-700">
+                <div>
+                  <div class="text-xs font-semibold text-white">Smart TVs & Home Office</div>
+                  <div class="text-[11px] text-slate-400">~250W continuous</div>
+                </div>
+              </label>
+
+              <label class="flex items-center gap-3 p-3 rounded-xl bg-[#0a0e17] border border-white/[0.08] hover:border-white/[0.2] cursor-pointer transition-colors">
+                <input type="checkbox" id="app-security" checked class="w-4 h-4 rounded accent-[#c5a880] bg-slate-800 border-slate-700">
+                <div>
+                  <div class="text-xs font-semibold text-white">Alarm, Gate Motor & CCTV</div>
+                  <div class="text-[11px] text-slate-400">~120W continuous</div>
+                </div>
+              </label>
+
+              <label class="flex items-center gap-3 p-3 rounded-xl bg-[#0a0e17] border border-white/[0.08] hover:border-white/[0.2] cursor-pointer transition-colors">
+                <input type="checkbox" id="app-pool" checked class="w-4 h-4 rounded accent-[#c5a880] bg-slate-800 border-slate-700">
+                <div>
+                  <div class="text-xs font-semibold text-white">Borehole / Water Pressure Pump</div>
+                  <div class="text-[11px] text-slate-400">~1,100W heavy motor</div>
+                </div>
+              </label>
+
+              <label class="flex items-center gap-3 p-3 rounded-xl bg-[#0a0e17] border border-white/[0.08] hover:border-white/[0.2] cursor-pointer transition-colors">
+                <input type="checkbox" id="app-ac" class="w-4 h-4 rounded accent-[#c5a880] bg-slate-800 border-slate-700">
+                <div>
+                  <div class="text-xs font-semibold text-white">Inverter Air Conditioner</div>
+                  <div class="text-[11px] text-slate-400">~1,800W cooling load</div>
+                </div>
+              </label>
+
+              <label class="flex items-center gap-3 p-3 rounded-xl bg-[#0a0e17] border border-white/[0.08] hover:border-white/[0.2] cursor-pointer transition-colors">
+                <input type="checkbox" id="app-geyser" class="w-4 h-4 rounded accent-[#c5a880] bg-slate-800 border-slate-700">
+                <div>
+                  <div class="text-xs font-semibold text-white">Geyser / Heat Pump</div>
+                  <div class="text-[11px] text-slate-400">~2,500W heating element</div>
+                </div>
+              </label>
+
+              <label class="flex items-center gap-3 p-3 rounded-xl bg-[#0a0e17] border border-white/[0.08] hover:border-white/[0.2] cursor-pointer transition-colors">
+                <input type="checkbox" id="app-kitchen" class="w-4 h-4 rounded accent-[#c5a880] bg-slate-800 border-slate-700">
+                <div>
+                  <div class="text-xs font-semibold text-white">Kitchen Appliances</div>
+                  <div class="text-[11px] text-slate-400">~1,500W intermittent</div>
+                </div>
+              </label>
+
+            </div>
+          </div>
+
+          <!-- Step 3: Visual Roof Panel Count -->
+          <div class="luxury-card p-6 rounded-3xl border border-white/[0.1]">
+            <div class="flex justify-between items-center mb-3">
+              <span class="text-xs font-bold text-white font-heading uppercase tracking-wider">Simulated Roof Module Array</span>
+              <span id="calc-panels" class="text-xs font-mono text-[#dfc9a8]">10 Modules (550W Tier-1)</span>
+            </div>
+            <div id="calc-roof-visualizer"></div>
+          </div>
+
+        </div>
+
+        <!-- Right: Engineered System Spec & Financial Savings (5 cols) -->
+        <div class="lg:col-span-5 space-y-6">
+          <div class="sticky top-28 space-y-6">
+            
+            <div class="luxury-card p-6 sm:p-8 rounded-3xl border border-white/[0.12] shadow-2xl space-y-6">
+              
+              <div class="border-b border-white/[0.08] pb-4">
+                <span class="text-[11px] font-mono uppercase tracking-widest text-[#dfc9a8]">Engineered Specification</span>
+                <h3 class="text-2xl font-bold font-heading text-white mt-1">Optimal System Blueprint</h3>
+              </div>
+
+              <!-- Hardware Breakdown -->
+              <div class="space-y-3.5 text-xs">
+                <div class="flex justify-between items-center pb-2 border-b border-white/[0.06]">
+                  <span class="text-slate-400 flex items-center gap-1.5">
+                    <i data-lucide="sun" class="w-4 h-4 text-[#c5a880]"></i> PV Solar Array:
+                  </span>
+                  <span id="calc-kwp" class="font-bold text-white font-heading">5.5 kWp</span>
+                </div>
+
+                <div class="flex justify-between items-center pb-2 border-b border-white/[0.06]">
+                  <span class="text-slate-400 flex items-center gap-1.5">
+                    <i data-lucide="cpu" class="w-4 h-4 text-[#c5a880]"></i> Hybrid Inverter:
+                  </span>
+                  <span id="calc-inverter" class="font-bold text-white font-heading">8.0 kW Pure Sine</span>
+                </div>
+
+                <div class="flex justify-between items-center pb-2 border-b border-white/[0.06]">
+                  <span class="text-slate-400 flex items-center gap-1.5">
+                    <i data-lucide="battery" class="w-4 h-4 text-[#c5a880]"></i> LiFePO4 Storage:
+                  </span>
+                  <span id="calc-battery" class="font-bold text-white font-heading">10.24 kWh</span>
+                </div>
+
+                <div class="flex justify-between items-center pb-2 border-b border-white/[0.06]">
+                  <span class="text-slate-400 flex items-center gap-1.5">
+                    <i data-lucide="shield" class="w-4 h-4 text-[#c5a880]"></i> Load Shedding Autonomy:
+                  </span>
+                  <span id="calc-backup-time" class="font-bold text-slate-200 font-heading">7.5 hrs backup</span>
+                </div>
+              </div>
+
+              <!-- Financial ROI Box -->
+              <div class="p-5 rounded-2xl bg-[#0a0e17] border border-white/[0.08] space-y-3">
+                <div class="flex justify-between items-baseline">
+                  <span class="text-xs text-slate-400">Est. Monthly Savings:</span>
+                  <span id="calc-monthly-savings" class="text-2xl font-bold font-heading text-[#dfc9a8]">R 3,690 / mo</span>
+                </div>
+
+                <div class="flex justify-between items-center text-xs">
+                  <span class="text-slate-400">Est. Annual Savings:</span>
+                  <span id="calc-yearly-savings" class="font-bold text-white">R 44,280</span>
+                </div>
+
+                <div class="flex justify-between items-center text-xs">
+                  <span class="text-slate-400">Estimated Payback Period:</span>
+                  <span id="calc-payback" class="font-bold text-slate-200 font-heading">3.6 Years</span>
+                </div>
+
+                <div class="flex justify-between items-center text-xs pt-1 border-t border-white/[0.06]">
+                  <span class="text-slate-400">Carbon Offset:</span>
+                  <span id="calc-co2" class="font-mono text-slate-300">14.2 Tonnes/yr</span>
+                </div>
+              </div>
+
+              <!-- CTA Actions -->
+              <div class="space-y-3 pt-2">
+                <a id="calc-wa-quote-btn" href="#" target="_blank" class="w-full py-3.5 rounded-xl btn-gold text-xs font-bold transition-all flex items-center justify-center gap-2 shadow-lg">
+                  <i data-lucide="message-circle" class="w-4 h-4"></i>
+                  <span>WhatsApp This System Blueprint</span>
+                </a>
+
+                <a href="contact.html#quote" class="w-full py-3 rounded-xl btn-outline-gold text-xs font-semibold transition-colors flex items-center justify-center gap-2">
+                  <i data-lucide="file-text" class="w-4 h-4"></i>
+                  <span>Request Written Formal Quote</span>
+                </a>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Mount Point -->
+  <div id="footer-mount"></div>
+
+  <!-- Shared Scripts -->
+  <script src="js/navbar.js"></script>
+  <script src="js/footer.js"></script>
+  <script src="js/calculator.js"></script>
+  <script src="js/main.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.initSolarCalculator) {
+        window.initSolarCalculator();
+      }
+    });
+  </script>
+</body>
+</html>
